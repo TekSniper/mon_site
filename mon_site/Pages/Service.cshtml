@@ -1,0 +1,65 @@
+﻿@page
+@model mon_site.Pages.ServicesModel
+@{
+    ViewData["Title"] = "Mes Services";
+}
+
+<div class="container body-about">
+    <div class="row">
+        <div class="col-lg-4 col-md-12 col-12">
+            <img class="img-fluid" alt="Merbeille Lubenzo" src="~/img/TekSniper.png" />
+        </div>
+        <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+            <h3 class="title">Nos services</h3>
+            <p>Nous offrons des services de Design Graphique et de Developpement informatique, avec une touche professionnel</p>
+            <p>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu">
+                        @foreach (var i in Model.GetDictParentServices())
+                        {
+                            <a class="dropdown-item" href="/Services?id=@i.Key">@i.Value</a>
+
+                        }
+                    </div>
+                </div>
+                <ul class="list-group">
+                    @foreach (var i in Model.GetParentServices())
+                    {
+                        <li class="list-group-item">@i</li>
+
+                    }
+                </ul>
+
+            </p><hr />
+            <p>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                ID
+                            </td>
+                            <td>
+                                Designation
+                            </td>
+                            <td>
+                                Prix
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var i in Model.GetDetails())
+                        {
+                            <tr>
+                                <th>@i.id</th>
+                                <tr>@i.designation</tr>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿body {
+
+}
+
+#indexStyle {
+    color: #005555;
+}
+
+.index_section{
+    margin-top:15px;
+}
+    .social_links a {
+        color: #005555;
+        text-decoration:none;
+    }
+        .social_links a:hover {
+            color: #005555;
+            text-decoration: none;
+        }
+        .social_links a:link {
+            color: #005555;
+            text-decoration: none;
+        }
+        .social_links a:visited {
+            color: #005555;
+            text-decoration: none;
+        }
+.paragraph {
+    margin-top: 15px;
+}
+.container {
+    height: auto;
+}
+.button {
+    background-color: #008080;
+}
+.button a{
+    color:white;
+}

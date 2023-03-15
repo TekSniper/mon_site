@@ -1,0 +1,110 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height:100%;
+}
+
+body {
+    min-height: 100%;
+    /*background: url('../img/TekSniper Site Cover.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;*/
+}
+
+.header {
+    background-image: url('../img/TekSniperSiteCover.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.section-welcome {
+    color: #013C4E;
+}
+/*
+    .section-welcome a {
+        color: #005555;
+        text-decoration:none;
+    }
+        .section-welcome a:visited {
+            color: #005555;
+            text-decoration: none;
+        }
+        .section-welcome a:hover {
+            color: #005555;
+            text-decoration: none;
+        }
+        .section-welcome a:link {
+            color: #005555;
+            text-decoration: none;
+        }
+.section-welcome-catalogue {
+    color: #008080;
+    text-decoration:none;
+}
+*/
+#indexStyle {
+}
+
+.paragraph-welcome {
+    color: #013C4E;
+}
+
+.social-links {
+    color: #005555;
+    font-size:24px;
+}
+
+    .social-links a {
+        color: #005555;
+        text-decoration: none;
+    }
+
+        .social-links a:visited {
+            color: #005555;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #008080;
+            text-decoration: none;
+        }
+
+        .social-links a:link {
+            color: #005555;
+            text-decoration: none;
+        }
+
+.sticky-footer {
+    position: sticky;
+    top: 100%;
+}
+
+.navbar-dropdown a {
+    color: white;
+}
+
+    .navbar-dropdown a:link {
+        color: white;
+    }
+
+.body-about {
+    color: #013C4E;
+}
+.card-zoom{
+    overflow:hidden;
+}
+.card-zoom img{
+    transition:1.5s all ease;
+}
+.card-zoom img:hover{
+    transform:scale(1.5);
+}

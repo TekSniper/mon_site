@@ -1,0 +1,14 @@
+﻿@page
+@model mon_site.Pages.Clients.IndexModel
+@{
+    ViewData["Title"] = "Espace client";
+}
+<div class="container">
+    <div style="margin-top:30px">
+        <h3 class="">Bienvenu dans l'espace client!</h3>
+
+        <p>
+            Taux de change : <strong>1 USD = @Model.CurrencyRates() CDF</strong>
+        </p>
+    </div>
+</div>

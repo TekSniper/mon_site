@@ -1,0 +1,66 @@
+﻿@page
+@model mon_site.Pages.ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container">
+    <h3 class="title text-center" style="padding-top:25px;">
+        Contact
+    </h3>
+    <p class="text-center" style="padding-top:25px;">
+        Vous avez un suggestion, une question, besoin d'un service que vous n'avez pas trouvé sur la liste affichée,<br />
+        laissez-nous un message
+    </p>
+    <div class="row">
+        <div class="col-lg-4 col-md-12 col-12">
+            <div>
+                <h3><i class="fa-solid fa-location-dot"></i> Adresse :</h3>
+                112 Av. Lokolela, C. Kinshasa, Kinshasa
+            </div><br />
+            <div>
+                <h3><i class="fa-solid fa-envelope"></i> Email :</h3>
+                <a href="mailto:lubenzo@pm.me" class="nav-link">lubenzo@pm.me</a>
+            </div><br />
+            <div>
+                <h3><i class="fa-solid fa-mobile"></i> Phone :</h3>
+                <a href="tel:00243898775637">+243 898 775 637</a>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+            <form method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputFisrtName">Prénom</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="inputFisrtName" placeholder="Votre Prénom">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputName">Nom</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Votre Nom">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Votre adresse mail">
+                </div>
+                <div class="form-group">
+                    <label for="inputSubject">Objet</label><label class="text-danger">*</label>
+                    <input type="text" class="form-control" id="inputSubject" placeholder="Objet" required>
+                </div>
+                <div class="form-group">
+                    <label for="textArea">Message</label><label class="text-danger">*</label>
+                    <textarea class="form-control" id="textArea" rows="3" placeholder="Message..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-danger">Envoyez le message</button>
+            </form>
+        </div>
+    </div>
+
+</div>
