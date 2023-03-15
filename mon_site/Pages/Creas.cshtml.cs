@@ -8,6 +8,7 @@ namespace mon_site.Pages
     public class CreasModel : PageModel
     {
         public Dictionary<int, string> listTypeCrea;
+        public List<TypeCrea> typeCreas = new List<TypeCrea>();
         public void OnGet()
         {
             if (Request.Query["Id"] == "")
@@ -31,6 +32,24 @@ namespace mon_site.Pages
                     listTypeCrea.Add(reader.GetInt32(0),reader.GetString(1));
 
                 return listTypeCrea;
+            }
+        }
+        public List<TypeCrea> GetTypeList()
+        {
+            using(var cn=new SqlConnection(new Db_Connection().GetConnectionString()))
+            {
+                cn.Open();
+                var cm = new SqlCommand("select * form TS_TypeCrea", cn);
+                var reader = cm.ExecuteReader();
+                while (reader.Read())
+                {
+                    TypeCrea type = new TypeCrea();
+                    type.ID = reader.GetInt32(0);
+                    type.Designation = reader.GetString(1);
+                    typeCreas.Add(type);
+                }
+
+                return typeCreas;
             }
         }
     }

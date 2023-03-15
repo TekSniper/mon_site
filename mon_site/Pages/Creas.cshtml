@@ -4,13 +4,13 @@
     ViewData["Title"] = "Portfolio";
 }
 
-<div class="container-fluid">
-    <h3>
+<div class="container">
+    <h3 style="padding-top:25px" class="text-center">
         Mes créas !
     </h3>
-
+    <!--
     <div class="wrapper">
-        <nav class="sidebar">
+        <nav class="" id="sidebar">
             <div class="sidebar-header">
                 <h3>Slider</h3>
             </div>
@@ -32,5 +32,56 @@
                 </li>
             </ul>
         </nav>
+    </div>
+    -->
+    <!--
+    <nav>
+        <ul>
+            <li>
+                <h3><a href="#">Menu</a></h3>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav-item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav*item">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav-item">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav-item">Portfolio</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav-item">Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    -->
+    <div class="row justify-content-center">
+        <div class="col col-sm-8 col-md-8 col-lg-6 text-center">
+
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-filter"></i> Filtre
+                </button>
+                <div class="dropdown-menu">
+                    @foreach (var _type in Model.GetlistType())
+                    {
+                        <a class="dropdown-item" href="/Creas?Id=@_type.Key">@_type.Value</a>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </div>
