@@ -1,4 +1,72 @@
 ﻿@page
 @model mon_site.Pages.Clients.CommandeModel
 @{
+    ViewData["Title"] = "Commande";
 }
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12 col-12 text-center" style="margin-top:25px;background:#09383C; border-radius:15px 15px 15px 15px">
+            <h3 style="color:white"><i class="fa-solid fa-hand-holding-dollar style="color:white; width:25px;height:25px;margin-top:5px"></i> Passer une commande</h3>
+        </div>
+    </div>
+    <div style="margin-top:25px">
+        <div class="row justify-content-center">
+            <div class="col-3 text-center shadow-sm">
+                <label></label><i class="fa-solid fa-shopping-cart" style="font-size:3rem"></i> <label style="font-size:20px">Pannier</label> <a href="/Clients/ValidationCommande" class="btn btn-outline-danger" style="margin-bottom:15px;"><i class="fa-solid fa-check"></i> Valider la commande</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top:25px">
+        <div class="col">
+            <form method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputFisrtName">Prénom</label>
+                        <input type="text" class="form-control" id="inputFisrtName">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputName">Nom</label>
+                        <input type="text" class="form-control" id="inputName">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Votre email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPhone">N° Téléphone</label>
+                        <input type="phone" class="form-control" id="inputPhone" placeholder="Votre numéro de téléphone" />
+                    </div>
+                </div>              
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputSexe">Je suis</label>
+                        <select id="inputSexe" class="form-control">
+                            <option>Choisissez</option>
+                            <option>Un Homme</option>
+                            <option>Une Femme</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputService">Service</label>
+                    <select id="inputService" class="form-control">
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info" value="Ajouter au panier" />
+                    </div>
+                </div>                
+            </form>
+        </div>
+    </div>
+</div>
