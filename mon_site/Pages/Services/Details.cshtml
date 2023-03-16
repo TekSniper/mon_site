@@ -32,10 +32,9 @@
         </div>
     </div>
     -->
-    <div class="row">
-        <div class="col text-center">
-            <br />
-            <h4><p>Details sur le service <strong>@Model.GetDesignationParent()</strong></p></h4>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12 col-12 text-center" style="margin-top:25px;background:#09383C; border-radius:15px 15px 15px 15px">
+            <h3 style="color:white"><i class="fa-solid fa-circle-info" style="color:white; width:25px;height:25px;margin-top:5px"></i> Détails sur @Model.GetDesignationParent()</h3>
         </div>
     </div>
     <div class="row gy-3 my-3">
@@ -55,7 +54,6 @@
                     </div>
                     <div class="card-body">
                         <h6 class="card-title">@serv.designation</h6>
-                        <p class="card-text">@serv.prix $</p>
                         <a href="#" class="btn btn-outline-danger m-auto d-block">Commandez</a>
                     </div>
                 </div>

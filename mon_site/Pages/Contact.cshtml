@@ -5,12 +5,15 @@
 }
 
 <div class="container">
-    <h3 class="title text-center" style="padding-top:25px;">
-        Contact
-    </h3>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12 col-12 text-center" style="margin-top:25px;background:#09383C; border-radius:15px 15px 15px 15px">
+            <h3 style="color:white"><i class="fa-solid fa-address-book" style="color:white; width:25px;height:25px;margin-top:5px"></i> Contact</h3>
+        </div>
+    </div>
+    
     <p class="text-center" style="padding-top:25px;">
-        Vous avez un suggestion, une question, besoin d'un service que vous n'avez pas trouvé sur la liste affichée,<br />
-        laissez-nous un message
+        Merci de l'intérêt que vous nous portez. Il y a ici plusieurs façons de nous contacter.<br />
+        Pour une réponse plus rapide et une gestion, une question ou besoin d'un service que vous n'avez pas trouvé sur la liste, veuillez utiliser le formulaire de contact.
     </p>
     <div class="row">
         <div class="col-lg-4 col-md-12 col-12">
@@ -43,16 +46,37 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">Nom</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="Votre Nom">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="inputName" placeholder="Votre Nom">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Votre adresse mail">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Votre adresse mail">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="inputSubject">Objet</label><label class="text-danger">*</label>
-                    <input type="text" class="form-control" id="inputSubject" placeholder="Objet" required>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" id="inputSubject" placeholder="Objet" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="textArea">Message</label><label class="text-danger">*</label>
