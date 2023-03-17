@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace mon_site.Pages
+namespace mon_site.Pages.Clients
 {
-    public class TestimonyModel : PageModel
+    public class TemoignageModel : PageModel
     {
         public void OnGet()
         {
