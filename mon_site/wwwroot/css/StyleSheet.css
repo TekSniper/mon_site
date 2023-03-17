@@ -1,9 +1,9 @@
 ﻿body {
-    background-image:url('../img/BgIndex(1).jpg');
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position:center;
-    background-size:cover;
+    background-image: url('../img/BgIndex(1).jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 .btn-rounded{
     border-radius:25px;

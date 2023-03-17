@@ -70,6 +70,22 @@
         </ul>
     </nav>
     -->
+
+    @if (Model.ErMessage != null)
+    {
+        <div class="row mb-3 justify-content-center">
+            <div class="col-sm-9">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <h4><strong>Erreur :</strong></h4>
+                    @Model.ErMessage
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+
     <div class="row justify-content-center">
         <div class="col col-sm-8 col-md-8 col-lg-6 text-center">
 
@@ -86,4 +102,102 @@
             </div>
         </div>
     </div>
-</div>
+    <div class="row" style="margin-top:15px">
+        @*<div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image"/>
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image" />
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image" />
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image" />
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image" />
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image" />
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image" />
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <div class="img-container">
+                    
+                    <img src="~/img/Cartes de service.jpg" alt="" class="image"/>
+                    <div class="overlay">
+                        <p class="caption">Carte de service Concept Multiservice</p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        @foreach(var crea in Model.listCreas)
+        {
+            <div class="item col-lg-4 col-sm-6 shadow-sm">
+                <a href="data:image;base64,@System.Convert.ToBase64String(@crea.Url_byte)" class="fancybox" data-fancybox="gallery1">
+                    <div class="thumbnail">
+                        <div class="img-container">
+                            <img src="data:image;base64,@System.Convert.ToBase64String(@crea.Url_byte)" alt="" class="image" />
+                            <div class="overlay">
+                                <p class="caption">@crea.Titre</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }        
+    </div>
+    

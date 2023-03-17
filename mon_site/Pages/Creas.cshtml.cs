@@ -9,15 +9,67 @@ namespace mon_site.Pages
     {
         public Dictionary<int, string> listTypeCrea;
         public List<TypeCrea> typeCreas = new List<TypeCrea>();
+        public List<MesCreas> listCreas = new List<MesCreas>();
+        public string ErMessage { get; set; }
+        public string SuMessage { get; set; }
         public void OnGet()
         {
-            if (Request.Query["Id"] == "")
+            if (Request.Query["Id"] == "all")
             {
-
+                try
+                {
+                    using (var cn = new SqlConnection(new Db_Connection().GetConnectionString()))
+                    {
+                        cn.Open();
+                        var cm = new SqlCommand("select * from TS_Crea", cn);
+                        var reader = cm.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            MesCreas mesCreas = new MesCreas();
+                            mesCreas.ID = reader.GetInt32(0);
+                            mesCreas.Type = reader.GetInt32(1);
+                            mesCreas.Designation = reader.GetString(2);
+                            mesCreas.Titre = reader.GetString(3);
+                            mesCreas.DateCreation = (DateTime)reader[4];
+                            mesCreas.Url_byte = (byte[])reader[7];
+                            listCreas.Add(mesCreas);
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    ErMessage = ex.Message;
+                    return;
+                }                
             }
-            else
+            if (Request.Query["Id"] != "all")
             {
-
+                try
+                {
+                    using (var cn = new SqlConnection(new Db_Connection().GetConnectionString()))
+                    {
+                        cn.Open();
+                        var cm = new SqlCommand("select * from TS_Crea where id_type=@type", cn);
+                        cm.Parameters.AddWithValue("@type", int.Parse(Request.Query["Id"]));
+                        var reader = cm.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            MesCreas mesCreas = new MesCreas();
+                            mesCreas.ID = reader.GetInt32(0);
+                            mesCreas.Type = reader.GetInt32(1);
+                            mesCreas.Designation = reader.GetString(2);
+                            mesCreas.Titre = reader.GetString(3);
+                            mesCreas.DateCreation = (DateTime)reader[4];
+                            mesCreas.Url_byte = (byte[])reader[7];
+                            listCreas.Add(mesCreas);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErMessage = ex.Message;
+                    return;
+                }
             }
         }
         public Dictionary<int, string> GetlistType()
@@ -51,7 +103,7 @@ namespace mon_site.Pages
 
                 return typeCreas;
             }
-        }
+        }        
     }
 
     public class MesCreas
