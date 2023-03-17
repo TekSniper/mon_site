@@ -58,6 +58,7 @@ namespace mon_site.Pages.Services
         public string designation { get; set; }
         public decimal prix { get; set; }
         public string img { get; set; }
+        private List<string>subSeriveList { get; set; }
         public Service_cl()
         {
             this.prix = 0.00M;
@@ -105,6 +106,21 @@ namespace mon_site.Pages.Services
                 adapter.Fill(servicesTable);
 
                 return servicesTable;
+            }
+        }
+        public List<string> GetSubServiceList()
+        {
+            using(var cn=new SqlConnection(this.connectionString))
+            {
+                cn.Open();
+                var cm = new SqlCommand("select * from TS_Service where parent is not null", cn);
+                var reader = cm.ExecuteReader();
+                subSeriveList = new List<string>();
+                while (reader.Read())
+                {
+                    subSeriveList.Add(reader.GetString("serv_designation"));
+                }
+                return subSeriveList;
             }
         }
     }

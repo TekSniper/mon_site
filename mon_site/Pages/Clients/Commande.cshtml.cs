@@ -9,6 +9,9 @@ namespace mon_site.Pages.Clients
     {
 
         //public DataTable cmd_cart = new DataTable();
+        List<string> subServices = new List<string>();
+        public string ErrMessage { get; set; }
+        public string SucMessage { get; set; }
         public DataTable CreateDataTable()
         {
             DataTable cmd_cart = new DataTable();
@@ -24,10 +27,39 @@ namespace mon_site.Pages.Clients
         }
         public void OnGet()
         {
+            try
+            {
 
+            }
+            catch(Exception ex)
+            {
+                ErrMessage = ex.Message;
+            }
         }
         public void OnPost() 
         {
+            
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+                ErrMessage = ex.Message;
+                return;
+            }
+        }
+        public List<string> GetSubServices()
+        {
+            try
+            {
+                subServices = new Services.Service_cl().GetSubServiceList();                
+            }
+            catch (Exception ex)
+            {
+                ErrMessage = ex.Message;
+            }
+            return subServices;
         }
     }
 
@@ -72,5 +104,9 @@ namespace mon_site.Pages.Clients
             else { }
             return this.NumCmd;
         }
+    }
+    public class DetailsCommande
+    {
+        public int Id { get; set; }
     }
 }
