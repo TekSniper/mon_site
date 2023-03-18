@@ -108,3 +108,12 @@ body {
 .card-zoom img:hover{
     transform:scale(1.5);
 }
+.btn-rounded {
+    border-radius: 25px;
+}
+.btn-tab-count {
+    height: 7em;
+    width: 7em;
+    border-radius: 50%;
+    border: solid 4px #BAC0C8;
+}

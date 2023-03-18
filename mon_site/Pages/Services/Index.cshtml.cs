@@ -58,7 +58,7 @@ namespace mon_site.Pages.Services
         public string designation { get; set; }
         public decimal prix { get; set; }
         public string img { get; set; }
-        private List<string>subSeriveList { get; set; }
+        private Dictionary<int, string> subSeriveList { get; set; }
         public Service_cl()
         {
             this.prix = 0.00M;
@@ -73,7 +73,7 @@ namespace mon_site.Pages.Services
                 var reader = cm.ExecuteReader();
                 services = new Dictionary<int, string>();
                 while (reader.Read())
-                    services.Add((int)reader[0], reader["serv_designation"].ToString());
+                    services.Add((int)reader[0], reader.GetString("serv_designation"));
 
                 return services;
             }
@@ -88,7 +88,7 @@ namespace mon_site.Pages.Services
                 servicesParents = new List<string>();
                 while (reader.Read())
                 {
-                    servicesParents.Add(reader[0].ToString());
+                    servicesParents.Add(reader.GetString(0));
                 }
 
                 return servicesParents;
@@ -108,19 +108,51 @@ namespace mon_site.Pages.Services
                 return servicesTable;
             }
         }
-        public List<string> GetSubServiceList()
+        public Dictionary<int, string> GetSubServiceList()
         {
             using(var cn=new SqlConnection(this.connectionString))
             {
                 cn.Open();
-                var cm = new SqlCommand("select * from TS_Service where parent is not null", cn);
+                var cm = new SqlCommand("select id_service,serv_designation,prix from TS_Service where parent is not null", cn);
                 var reader = cm.ExecuteReader();
-                subSeriveList = new List<string>();
-                while (reader.Read())
-                {
-                    subSeriveList.Add(reader.GetString("serv_designation"));
-                }
+                subSeriveList = new Dictionary<int, string>();
+                while(reader.Read())
+                    subSeriveList.Add(reader.GetInt32(0), reader.GetString(1));
+                
+
                 return subSeriveList;
+            }
+        }
+        public string GetDesignationService(int ID)
+        {
+            var read = "";
+            using(var cn=new SqlConnection(this.connectionString))
+            {
+                cn.Open();
+                var cm = new SqlCommand("select serv_designation from TS_Service where id_service=@id", cn);
+                cm.Parameters.AddWithValue("@id", ID);
+                var reader = cm.ExecuteReader();
+
+                if(reader.Read())
+                    read = reader.GetString(0);
+
+                return read;
+            }
+        }
+        public decimal GetPriceService(int ID)
+        {
+            var read = 0.00M;
+            using (var cn = new SqlConnection(this.connectionString))
+            {
+                cn.Open();
+                var cm = new SqlCommand("select prix from TS_Service where id_service=@id", cn);
+                cm.Parameters.AddWithValue("@id", ID);
+                var reader = cm.ExecuteReader();
+
+                if (reader.Read())
+                    read = reader.GetDecimal(0);
+
+                return read;
             }
         }
     }

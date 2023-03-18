@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using mon_site.Pages.Services;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -9,21 +10,22 @@ namespace mon_site.Pages.Clients
     {
 
         //public DataTable cmd_cart = new DataTable();
-        List<string> subServices = new List<string>();
+        Dictionary<int,string> subServices = new Dictionary<int, string>();
         public string ErrMessage { get; set; }
         public string SucMessage { get; set; }
+        public int RowCount = 0;
         public DataTable CreateDataTable()
         {
             DataTable cmd_cart = new DataTable();
             cmd_cart.Columns.Add("ID_Service");
             cmd_cart.Columns.Add("Designation");
+            cmd_cart.Columns.Add("Prix");
 
             return cmd_cart;
         }
         public void InsertIntoDataTable()
         {
             var tab = CreateDataTable();
-
         }
         public void OnGet()
         {
@@ -37,11 +39,12 @@ namespace mon_site.Pages.Clients
             }
         }
         public void OnPost() 
-        {
-            
+        {            
             try
             {
-
+                var cart = CreateDataTable();
+                cart.Rows.Add(Request.Form["service"],new Service_cl().GetDesignationService(int.Parse(Request.Form["service"])),new Service_cl().GetPriceService(int.Parse(Request.Form["service"])));
+                RowCount = cart.Rows.Count;
             }
             catch(Exception ex)
             {
@@ -49,7 +52,7 @@ namespace mon_site.Pages.Clients
                 return;
             }
         }
-        public List<string> GetSubServices()
+        public Dictionary<int, string> GetSubServices()
         {
             try
             {

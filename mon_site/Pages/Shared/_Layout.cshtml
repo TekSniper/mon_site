@@ -11,7 +11,6 @@
     <link href="~/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/img/favicon.ico" rel="icon" type="image/x-icon"/>
-    <link href="~/css/stylesidebar.css" rel="stylesheet" />
     <link href="~/css/gallery.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" rel="stylesheet" />
     
@@ -45,7 +44,7 @@
                                 <i class="fa-solid fa-money-bill-trend-up"></i> Espace client
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/Clients/Commande" style="color:#181819">Commandez</a>
+                                <a class="dropdown-item" href="/Clients?quest=respond" style="color:#181819">Commandez</a>
                                 <a class="dropdown-item" href="/Clients/Temoignage" style="color:#181819">Temoignage</a>
                             </div>
                         </li>
@@ -67,7 +66,7 @@
 
     <footer class="border-top footer text-secondary bg-light text-center sticky-footer">
         <div class="container">
-            &copy; @DateTime.Now.Year TekSniper. Tous droits réservés - <a class="btn btn-outline-danger" align="right" asp-page="/Clients/Index">Passez une commande</a>         
+            &copy; @DateTime.Now.Year TekSniper. Tous droits réservés        
         </div>
     </footer>
 

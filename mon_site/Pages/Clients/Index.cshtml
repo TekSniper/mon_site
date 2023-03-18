@@ -4,11 +4,133 @@
     ViewData["Title"] = "Espace client";
 }
 <div class="container">
-    <div style="margin-top:30px">
-        <h3 class="">Bienvenu dans l'espace client!</h3>
-
-        <p>
-            Taux de change : <strong>1 USD = @Model.CurrencyRates() CDF</strong>
-        </p>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12 col-12 text-center" style="margin-top:25px;background:#09383C; border-radius:15px 15px 15px 15px">
+            <h3 style="color:white"><i class="fa-solid fa-hand-holding-dollar style="color:white; width:25px;height:25px;margin-top:5px"></i> Espace client</h3>
+        </div>
     </div>
+    
+    @if (Model.msg == "Question" || Model.msg == "No")
+    {
+        <div class="row justify-content-center">
+            <div class="col-md-6" style="margin-top:15px">
+                <div class="alert alert-primary" role="alert">
+                    Vous voulez encore de nos service ? <strong>Entrez l'identifiant (email)</strong> que vous avez renseingé à votre dernière commande et passez une une nouvelle 😉
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">            
+            <div class="col-md-6 shadow" style="margin-top:15px">
+                
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="emailClient">Email</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-solid fa-envelope"></i></span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="Votre email" id="emailClient" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info btn-rounded" value="Se connecter !">
+                    </div>
+                    <div class="form-group">
+                        C'est votre première commande ? Alors <a href="/Clients?quest=yes">cliquez ici...</a>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    }
+    @if (Model.msg == "Yes")
+    {
+        <div class="row justify-content-center">
+            <div class="col-md-6" style="margin-top:15px">
+                <div class="alert alert-primary" role="alert">
+                    <h4 class="alert-heading"><strong>Salut !</strong></h4>
+                    Vous avez besoin de nos service ? <strong>Remplissez le formulaire de reseignement sur vous</strong> et passez votre commande.
+                    
+                    <p>
+                        Ce renseignement vous permettra de vous identifier et passer des nouvelles commandes sans envoyer à nouveau des renseignement sur vous 😉
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 shadow" style="margin-top:15px">
+
+                <form method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="prenomClient">Prénom</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-solid fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Votre prénom" id="prenomClient" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="nomClient">Nom</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-solid fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Votre prénom" id="nomClient" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailClient">Email</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-regular fa-envelope"></i></span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="Votre email" id="emailClient" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="phoneClient">N° Téléphone</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-solid fa-phone"></i></span>
+                                </div>
+                                <input type="tel" class="form-control" placeholder="Votre numéro de téléphone" id="phoneClient" required>
+                            </div>
+                        </div><div class="form-group col-md-4">
+                            <label for="sexeClient">Je suis</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-solid fa-venus-mars"></i></span>
+                                </div>
+                                <select class="form-control" name="sexe" id="sexeClient">
+                                    <option value="">Select....</option>
+                                    <option value="M">Un homme</option>
+                                    <option value="F">Une femme</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info btn-rounded" value="Nouveau !">
+                    </div>
+                    <div class="form-group">
+                        Vous avez déjà demandé un service chez nous ? Allez renseigner votre email et passez une commande en <a href="/Clients?quest=no">cliquant ici...</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    @if(Model.msg != "Yes" && Model.msg != "No" && Model.msg != "Question")
+    {
+        <div class="alert alert-warning" style="margin-top:15px" role="alert">
+            <h4 class="alert-heading">Attention !</h4>
+            <strong>@Model.msg</strong> 
+            <p>
+                <a href="/" class="btn-link">Retourner à la page d'accueil</a>
+            </p>
+        </div>
+    }
 </div>

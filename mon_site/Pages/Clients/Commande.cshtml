@@ -13,7 +13,16 @@
     <div style="margin-top:25px">
         <div class="row justify-content-center">
             <div class="col-3 text-center shadow-sm">
-                <label></label><i class="fa-solid fa-shopping-cart" style="font-size:3rem"></i> <label style="font-size:20px">Pannier</label> <a href="/Clients/ValidationCommande" class="btn btn-outline-danger" style="margin-bottom:15px;"><i class="fa-solid fa-check"></i> Valider la commande</a>
+                @if(Model.RowCount != 0)
+                {
+                    <label class="btn btn-link btn-tab-count">@Model.RowCount</label>
+                }
+                
+                <i class="fa-solid fa-shopping-cart" style="font-size:2rem"></i> <label style="font-size:14px" class=" btn btn-info">
+                    Pannier <span class="badge badge-light">9</span>
+                    <span class="sr-only">unread messages</span>
+
+                </label> <a href="/Clients/ValidationCommande" class="btn btn-outline-danger" style="margin-bottom:15px;"><i class="fa-solid fa-check"></i> Valider la commande</a>
             </div>
         </div>
 
@@ -57,7 +66,7 @@
                         <option value="">...</option>
                         @foreach(var li in Model.GetSubServices())
                         {
-                            <option value="@li">@li</option>
+                            <option value="@li.Key">@li.Value</option>
                         }
                     </select>
                 </div>
