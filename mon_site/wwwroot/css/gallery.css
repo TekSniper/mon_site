@@ -4,6 +4,7 @@
     display:block;
     width:100%;
     cursor:pointer;
+    height:auto;
 }
 .overlay{
     position:absolute;
@@ -29,6 +30,9 @@
 }
 .thumbnail:hover{
     transform:translateY(-4px);
+}
+.img-container{
+    height:auto;
 }
 .img-container:hover .overlay{
     opacity:1;
