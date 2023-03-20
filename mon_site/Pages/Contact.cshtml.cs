@@ -7,8 +7,8 @@ namespace mon_site.Pages
 {
     public class ContactModel : PageModel
     {
-        public string ErrMessage { get; set; }
-        public string SucMessage { get; set; }
+        public string ErrMessage = "";
+        public string SucMessage = "";
         Contact contactInfo = new Contact();
         public void OnGet()
         {
