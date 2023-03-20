@@ -12,34 +12,46 @@ namespace mon_site.Pages.Services
     {
         public List<Service_cl> service_list = new List<Service_cl>();
         public string designationParent { get; set; }
+        public string ErrMessage { get; set; }
         public void OnGet()
         {
-            if (Request.Query["id"] == "2")
+            try
             {
-
-            }
-            else
-            {
-                using (var cn = new SqlConnection(new Db_Connection().GetConnectionString()))
+                if (Request.Query["id"] != "1" && Request.Query["id"] != "2")
                 {
-                    cn.Open();
-                    var cm = new SqlCommand("select * from TS_Service where parent=@parent", cn);
-                    cm.Parameters.AddWithValue("@parent", int.Parse(Request.Query["id"]));
-                    var reader = cm.ExecuteReader();
-                    while (reader.Read())
+                    ErrMessage = "Aucun élément trouvé concernant ce détail";
+                }
+                else
+                {
+                    using (var cn = new SqlConnection(new Db_Connection().GetConnectionString()))
                     {
-                        Service_cl service_Cl = new Service_cl();
-                        service_Cl.id = reader.GetInt32(0);
-                        service_Cl.designation = reader.GetString(1);
-                        service_Cl.prix = reader.GetDecimal(3);
+                        cn.Open();
+                        var cm = new SqlCommand("select * from TS_Service where parent=@parent", cn);
+                        cm.Parameters.AddWithValue("@parent", int.Parse(Request.Query["id"]));
+                        var reader = cm.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Service_cl service_Cl = new Service_cl();
+                            service_Cl.id = reader.GetInt32(0);
+                            service_Cl.designation = reader.GetString(1);
 
-                        if (reader[4].ToString() == "") { }
-                        else
-                            service_Cl.img = reader.GetString(4);
-                        service_list.Add(service_Cl);
+                            if (reader[3].ToString() == "") { }
+                            else
+                                service_Cl.prix = reader.GetDecimal(3);
+
+                            if (reader[4].ToString() == "") { }
+                            else
+                                service_Cl.img = reader.GetString(4);
+                            service_list.Add(service_Cl);
+                        }
                     }
                 }
-            }            
+            }
+            catch(Exception ex)
+            {
+                ErrMessage = ex.Message;
+                return;
+            }                        
         }
         public void OnPost() 
         { 

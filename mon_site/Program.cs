@@ -9,7 +9,7 @@ builder.Services.AddSession
 (
     o =>
     {
-        o.IdleTimeout = TimeSpan.FromMinutes(30);
+        o.IdleTimeout = TimeSpan.FromMinutes(120);
     }
     );
 
